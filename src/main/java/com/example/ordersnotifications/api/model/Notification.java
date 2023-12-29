@@ -5,10 +5,10 @@ import java.util.Dictionary;
 public class Notification {
     NotificationTemplate template;
     public String recipient;
-    Dictionary<String, String> values;
+    String values;
 
 
-    public Notification(NotificationTemplate template, String recipient, Dictionary<String, String> values) {
+    public Notification(NotificationTemplate template, String recipient, String values) {
         this.template = template;
         this.recipient = recipient;
         this.values = values;
@@ -30,11 +30,11 @@ public class Notification {
         this.recipient = recipient;
     }
 
-    public Dictionary<String, String> getValues() {
+    public String getValues() {
         return values;
     }
 
-    public void setValues(Dictionary<String, String> values) {
+    public void setValues(String values) {
         this.values = values;
     }
 

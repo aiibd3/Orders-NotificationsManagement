@@ -4,7 +4,6 @@ import java.util.List;
 
 public class NotificationTemplate {
 
-    public int templateId;
     public String templateType;
     public String subject;
     public String content;
@@ -13,8 +12,7 @@ public class NotificationTemplate {
     List<String> channels;
 
 
-    public NotificationTemplate(int templateId, String templateType, String subject, String content, List<String> placeholders, List<String> languages, List<String> channels) {
-        this.templateId = templateId;
+    public NotificationTemplate(String templateType, String subject, String content, List<String> placeholders, List<String> languages, List<String> channels) {
         this.templateType = templateType;
         this.subject = subject;
         this.content = content;
@@ -23,13 +21,6 @@ public class NotificationTemplate {
         this.channels = channels;
     }
 
-    public int getTemplateId() {
-        return templateId;
-    }
-
-    public void setTemplateId(int templateId) {
-        this.templateId = templateId;
-    }
 
     public String getTemplateType() {
         return templateType;

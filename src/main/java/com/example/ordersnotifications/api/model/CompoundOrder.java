@@ -6,12 +6,21 @@ public class CompoundOrder {
 
     private int compoundOrderId;
     private List<Order> orderList;
+    private List<Customer> customers;
     private boolean shipped;
 
     public CompoundOrder(int compoundOrderId, List<Order> orderList, boolean shipped) {
         this.compoundOrderId = compoundOrderId;
         this.orderList = orderList;
         this.shipped = shipped;
+    }
+
+    public List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public void setCustomers(List<Customer> customers) {
+        this.customers = customers;
     }
 
     public int getCompoundOrderId() {

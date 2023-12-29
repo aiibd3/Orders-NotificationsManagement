@@ -6,7 +6,6 @@ public class NotificationQueue {
 
     List<Notification> notificationList;
 
-
     public void addToQueue(Notification notification) {
 
     }

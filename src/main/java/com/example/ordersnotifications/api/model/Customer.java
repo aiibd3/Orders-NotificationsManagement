@@ -1,11 +1,24 @@
 package com.example.ordersnotifications.api.model;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Customer {
 
     private int accountId;
+    private int name;
     private Double balance;
+    private AtomicInteger orderIdCounter = new AtomicInteger(0);
+    private AtomicInteger compoundOrderIdCounter = new AtomicInteger(0);
+
+    public int getName() {
+        return name;
+    }
+
+    public void setName(int name) {
+        this.name = name;
+    }
 
     public Customer(int accountId, Double balance) {
         this.accountId = accountId;
@@ -42,24 +55,22 @@ public class Customer {
         return compoundOrder.getCompoundOrderId();
     }
 
-//    public Order placeOrder(List<Product> products) {
-//        // Assuming you have a method to generate a unique order ID
-//       //int orderId = getOrderId(new Order()); // Replace with your actual implementation
-//       //Order order = new Order(orderId, this, products, false); // Assuming 'false' for 'shipped'
-//        // Deduct the total order amount from the customer's balance
-//        // Update balance logic goes here
-//
-//        //return products;
-//    }
-//
-//    public CompoundOrder placeCompoundOrder(List<Order> orders) {
-//        // Assuming you have a method to generate a unique compound order ID
-//        //int compoundOrderId = getCompoundOrderId(new CompoundOrder()); // Replace with your actual implementation
-//        //CompoundOrder compoundOrder = new CompoundOrder(compoundOrderId, orders, false); // Assuming 'false' for 'shipped'
-//        // Deduct the total order amount from each customer's balance
-//        // Update balance logic goes here
-//       // return compoundOrder;
-//    }
+    public Order placeOrder(List<Product> products) {
+
+        int orderId = generateOrderId(); // Replace with your actual implementation
+        Order order = new Order(orderId, this, products, false); // Assuming 'false' for 'shipped'
+        // Deduct the total order amount from the customer's balance
+        // Update balance logic goes here
+        return order;
+    }
+
+    public CompoundOrder placeCompoundOrder(List<Order> orders) {
+        int compoundOrderId = generateCompoundOrderId(); // Replace with your actual implementation
+        CompoundOrder compoundOrder = new CompoundOrder(compoundOrderId, orders, false); // Assuming 'false' for 'shipped'
+        // Deduct the total order amount from each customer's balance
+        // Update balance logic goes here
+        return compoundOrder;
+    }
 
     public void shipOrder(Order order) {
         // Implementation for shipping a simple order goes here
@@ -83,5 +94,13 @@ public class Customer {
         // Implementation for canceling shipping of a simple order goes here
         // Refund the shipping fees to the customer's balance
         // Update balance logic goes here
+    }
+    private int generateOrderId() {
+        return orderIdCounter.incrementAndGet();
+    }
+
+    // Placeholder method for generating a unique compound order ID
+    private int generateCompoundOrderId() {
+        return compoundOrderIdCounter.incrementAndGet();
     }
 }
