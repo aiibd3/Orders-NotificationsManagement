@@ -4,15 +4,14 @@ import java.util.List;
 
 public class NotificationTemplate {
 
-    public String templateType;
-    public String subject;
-    public String content;
-    List<String> placeholders;
-    List<String> languages;
-    List<String> channels;
+    private String templateType;
+    private String subject;
+    private String content;
+    private List<String> placeholders;
+    private List<String> languages;
+    private List<String> channels;
 
-
-    public NotificationTemplate(String templateType, String subject, String content, List<String> placeholders, List<String> languages, List<String> channels) {
+    public NotificationTemplate(String templateType, String subject, String content,List<String> placeholders, List<String> languages, List<String> channels) {
         this.templateType = templateType;
         this.subject = subject;
         this.content = content;
@@ -20,7 +19,6 @@ public class NotificationTemplate {
         this.languages = languages;
         this.channels = channels;
     }
-
 
     public String getTemplateType() {
         return templateType;
@@ -70,9 +68,5 @@ public class NotificationTemplate {
         this.channels = channels;
     }
 
-
-    public String getTemplateDetails() {
-        return "";
-    }
-
+    // You may add additional methods or behaviors as needed
 }

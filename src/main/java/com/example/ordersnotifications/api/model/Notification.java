@@ -7,10 +7,10 @@ import java.util.Map;
 public class Notification {
     NotificationTemplate template;
     public String recipient;
-    String values;
+    //String values;
+    private Map<String, String> values;
 
-
-    public Notification(NotificationTemplate template, String recipient, String values) {
+    public Notification(NotificationTemplate template, String recipient, Map<String, String> values) {
         this.template = template;
         this.recipient = recipient;
         this.values = values;
@@ -32,7 +32,7 @@ public class Notification {
         this.recipient = recipient;
     }
 
-    public String getValues() {
+    public Map<String, String> getValues() {
         return values;
     }
 
@@ -44,4 +44,6 @@ public class Notification {
 
     }
 
+    public void sendNotification(NotificationStrategy smsStrategy) {
+    }
 }
