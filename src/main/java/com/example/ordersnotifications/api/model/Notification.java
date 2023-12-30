@@ -1,6 +1,8 @@
 package com.example.ordersnotifications.api.model;
 
-import java.util.Dictionary;
+import com.example.ordersnotifications.service.NotificationStrategy.NotificationStrategy;
+
+import java.util.Map;
 
 public class Notification {
     NotificationTemplate template;
@@ -34,7 +36,7 @@ public class Notification {
         return values;
     }
 
-    public void setValues(String values) {
+    public void setValues(Map<String, String> values) {
         this.values = values;
     }
 

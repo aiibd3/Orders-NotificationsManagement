@@ -1,7 +1,6 @@
 package com.example.ordersnotifications.api.model;
 
 public class Product {
-
     public int serialNumber;
     public String name;
     public String vendor;
@@ -66,7 +65,6 @@ public class Product {
     public void setRemainingParts(double remainingParts) {
         this.remainingParts = remainingParts;
     }
-
 
     public String getProductDetails() {
         return "";
