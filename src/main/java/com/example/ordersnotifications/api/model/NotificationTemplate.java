@@ -1,5 +1,6 @@
 package com.example.ordersnotifications.api.model;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class NotificationTemplate {
@@ -11,12 +12,12 @@ public class NotificationTemplate {
     private List<String> languages;
     private List<String> channels;
 
-    public NotificationTemplate(String templateType, String subject, String content,List<String> placeholders, List<String> languages, List<String> channels) {
+    public NotificationTemplate(String templateType, String subject, String content, List<String> placeholders, List<String> channels) {
         this.templateType = templateType;
         this.subject = subject;
         this.content = content;
         this.placeholders = placeholders;
-        this.languages = languages;
+        this.languages = Arrays.asList("English", "Arabic"); // Adjust languages to include only English and Arabic
         this.channels = channels;
     }
 
