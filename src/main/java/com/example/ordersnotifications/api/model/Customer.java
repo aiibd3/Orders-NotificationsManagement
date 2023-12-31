@@ -6,22 +6,24 @@ import java.util.concurrent.atomic.AtomicInteger;
 public class Customer {
 
     private int accountId;
-    private int name;
+    private String name;
     private Double balance;
     private final AtomicInteger orderIdCounter = new AtomicInteger(0);
     private final AtomicInteger compoundOrderIdCounter = new AtomicInteger(0);
 
-    public int getName() {
+    public String getName() {
         return name;
     }
 
-    public void setName(int name) {
+    public void setName(String name) {
         this.name = name;
     }
 
-    public Customer(int accountId, Double balance) {
+    public Customer(int accountId, Double balance, String name) {
         this.accountId = accountId;
         this.balance = balance;
+        this.name = name;
+
     }
 
     public int getAccountId() {
@@ -57,6 +59,7 @@ public class Customer {
         // Implementation for canceling a simple order goes here
 
     }
+
     public Order placeOrder(List<Product> products) {
 
         int orderId = generateOrderId(); // Replace with your actual implementation
@@ -73,6 +76,7 @@ public class Customer {
         // Update balance logic goes here
         return compoundOrder;
     }
+
     private int generateOrderId() {
         return orderIdCounter.incrementAndGet();
     }

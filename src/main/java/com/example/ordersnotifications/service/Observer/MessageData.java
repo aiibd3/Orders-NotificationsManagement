@@ -12,23 +12,8 @@ public class MessageData {
 
     private NotificationTemplate notificationTemplate;
 
-    public Order getOrder() {
-        return order;
-    }
-
     public String getMessage() {
         return notificationTemplate.getContent();
     }
 
-    public void setOrder(Order order) {
-        this.order = order;
-    }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
 }

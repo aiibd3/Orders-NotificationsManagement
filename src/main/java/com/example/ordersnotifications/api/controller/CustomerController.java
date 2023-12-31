@@ -25,7 +25,7 @@ public class CustomerController {
     @Path("/cancelOrder")
     @Consumes(MediaType.APPLICATION_JSON)
     public String cancelOrder(Order order) {
-        Customer customer = new Customer(order.getOrderId(), order.getCustomer().getBalance());
+        Customer customer = new Customer(order.getOrderId(), order.getCustomer().getBalance(), order.getCustomer().getName());
 
         int orderId = order.getOrderId();
 

@@ -11,7 +11,7 @@ public class SMSObserver implements MessageObserver {
 
     @Override
     public void sendMassage(MessageData messageData) {
-        int name = messageData.customer.getName();
+        String name = messageData.customer.getName();
         String message = messageData.getMessage();
     }
 }

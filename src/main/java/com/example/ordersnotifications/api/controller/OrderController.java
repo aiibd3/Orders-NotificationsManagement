@@ -22,7 +22,7 @@ public class OrderController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Order placeOrder(SimpleOrderRequest simpleOrderRequest) {
-        Customer customer = new Customer(simpleOrderRequest.getAccountId(), simpleOrderRequest.getBalance());
+        Customer customer = new Customer(simpleOrderRequest.getAccountId(), simpleOrderRequest.getBalance(), simpleOrderRequest.getName());
         List<Product> products = simpleOrderRequest.getProducts();
         Order order = customer.placeOrder(products);
         return order;
@@ -33,7 +33,7 @@ public class OrderController {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public CompoundOrder placeCompoundOrder(CompoundOrderRequest compoundOrderRequest) {
-        Customer customer = new Customer(compoundOrderRequest.getAccountId(), compoundOrderRequest.getBalance());
+        Customer customer = new Customer(compoundOrderRequest.getAccountId(), compoundOrderRequest.getBalance(), compoundOrderRequest.getName());
         List<Order> orders = compoundOrderRequest.getOrders();
         CompoundOrder compoundOrder = customer.placeCompoundOrder(orders);
         return compoundOrder;
