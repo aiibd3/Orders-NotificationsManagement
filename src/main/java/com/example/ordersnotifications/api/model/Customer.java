@@ -1,6 +1,5 @@
 package com.example.ordersnotifications.api.model;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -9,8 +8,8 @@ public class Customer {
     private int accountId;
     private int name;
     private Double balance;
-    private AtomicInteger orderIdCounter = new AtomicInteger(0);
-    private AtomicInteger compoundOrderIdCounter = new AtomicInteger(0);
+    private final AtomicInteger orderIdCounter = new AtomicInteger(0);
+    private final AtomicInteger compoundOrderIdCounter = new AtomicInteger(0);
 
     public int getName() {
         return name;
