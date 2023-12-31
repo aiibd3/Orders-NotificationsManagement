@@ -67,6 +67,4 @@ public class NotificationTemplate {
     public void setChannels(List<String> channels) {
         this.channels = channels;
     }
-
-    // You may add additional methods or behaviors as needed
 }

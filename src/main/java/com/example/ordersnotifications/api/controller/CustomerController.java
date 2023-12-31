@@ -8,6 +8,7 @@ import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 
+
 @Path("/customers")
 public class CustomerController {
 
@@ -26,8 +27,9 @@ public class CustomerController {
     public String cancelOrder(Order order) {
         Customer customer = new Customer(order.getOrderId(), order.getCustomer().getBalance());
 
-        customer.cancelOrder(order);
+        int orderId = order.getOrderId();
+
+        customer.cancelOrder(orderId);
         return "Order canceled successfully";
     }
-
 }

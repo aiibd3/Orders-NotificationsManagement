@@ -44,16 +44,19 @@ public class Customer {
         // Implementation for creating an account goes here
     }
 
-    // Updated method to take an Order parameter
     public int getOrderId(Order order) {
         return order.getOrderId();
     }
 
-    // Updated method to take a CompoundOrder parameter
     public int getCompoundOrderId(CompoundOrder compoundOrder) {
         return compoundOrder.getCompoundOrderId();
     }
 
+
+    public void cancelOrder(int order) {
+        // Implementation for canceling a simple order goes here
+
+    }
     public Order placeOrder(List<Product> products) {
 
         int orderId = generateOrderId(); // Replace with your actual implementation
@@ -69,30 +72,6 @@ public class Customer {
         // Deduct the total order amount from each customer's balance
         // Update balance logic goes here
         return compoundOrder;
-    }
-
-    public void shipOrder(Order order) {
-        // Implementation for shipping a simple order goes here
-        // Deduct shipping fees from the customer's balance
-        // Update balance logic goes here
-    }
-
-    public void shipCompoundOrder(CompoundOrder compoundOrder) {
-        // Implementation for shipping a compound order goes here
-        // Deduct shipping fees from each customer's balance
-        // Update balance logic goes here
-    }
-
-    public void cancelOrder(Order order) {
-        // Implementation for canceling a simple order goes here
-        // Refund the order amount to the customer's balance
-        // Update balance logic goes here
-    }
-
-    public void cancelShipping(Order order) {
-        // Implementation for canceling shipping of a simple order goes here
-        // Refund the shipping fees to the customer's balance
-        // Update balance logic goes here
     }
     private int generateOrderId() {
         return orderIdCounter.incrementAndGet();

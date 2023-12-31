@@ -9,7 +9,6 @@ public class NotificationQueue {
     public void addToQueue(Notification notification) {
 
     }
-
     public List<Notification> listQueueContents() {
         return notificationList;
     }
