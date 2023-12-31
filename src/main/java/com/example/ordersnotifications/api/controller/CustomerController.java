@@ -16,7 +16,7 @@ public class CustomerController {
     @Path("/createAccount")
     @Consumes(MediaType.APPLICATION_JSON)
     public String createAccount(Customer customerRequest) {
-        Customer customer = new Customer(customerRequest.getAccountId(), customerRequest.getBalance());
+        Customer customer = new Customer(customerRequest.getAccountId(), customerRequest.getBalance(), customerRequest.getName());
 
         return "Account created successfully";
     }
