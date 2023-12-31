@@ -11,13 +11,14 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 
 import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 @Path("/notifications")
 public class NotificationController {
 
-    private NotificationStrategy emailStrategy;
-    private NotificationStrategy smsStrategy;
+    private final NotificationStrategy emailStrategy;
+    private final NotificationStrategy smsStrategy;
 
     public NotificationController() {
         this.emailStrategy = new EmailNotificationStrategy();
@@ -35,7 +36,7 @@ public class NotificationController {
                 "Dear {name}, your booking of the item {item} is confirmed. Thanks for using our store :)",
                 Arrays.asList("name", "item"),
                 Arrays.asList("English", "Spanish"),
-                Arrays.asList("Email")
+                List.of("Email")
         );
 
         // Create an email notification based on the template and request

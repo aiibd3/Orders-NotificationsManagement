@@ -1,84 +1,100 @@
 package com.example.ordersnotifications.api.controller;
 
+import com.example.ordersnotifications.api.model.CompoundOrder;
+import com.example.ordersnotifications.api.model.Customer;
+import com.example.ordersnotifications.api.model.Order;
 import com.example.ordersnotifications.api.model.Product;
-import org.springframework.web.bind.annotation.*;
+
+import jakarta.ws.rs.*;
+import jakarta.ws.rs.core.MediaType;
 import java.util.List;
 
-
-
-@RestController
-@RequestMapping("/api/orders")
+@Path("/orders")
 public class OrderController {
 
-//    private OrderBsl OBsl;
-//
-//    @Autowired
-//    public OrderController(OrderBsl OBsl) {
-//        this.OBsl = OBsl;
-//    }
-
-    @PostMapping("/createAccount")
-    public void createAccount(
-            @RequestParam String username,
-            @RequestParam double initialBalance,
-            @RequestParam String address) {
-        // OBsl.createAccount(username, initialBalance, address);
+    @POST
+    @Path("/placeOrder")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Order placeOrder(OrderRequest orderRequest) {
+        Customer customer = new Customer(orderRequest.getAccountId(), orderRequest.getBalance());
+        List<Product> products = orderRequest.getProducts();
+        Order order = customer.placeOrder(products);
+        return order;
     }
 
-    @PostMapping("/placeSimpleOrder")
-    public void placeSimpleOrder(
-            @RequestParam int orderId,
-            @RequestParam String username,
-            @RequestBody List<Product> products) {
-        // OBsl.placeSimpleOrder(orderId, username, products);
+    @POST
+    @Path("/placeCompoundOrder")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON)
+    public CompoundOrder placeCompoundOrder(CompoundOrderRequest compoundOrderRequest) {
+        Customer customer = new Customer(compoundOrderRequest.getAccountId(), compoundOrderRequest.getBalance());
+        List<Order> orders = compoundOrderRequest.getOrders();
+        CompoundOrder compoundOrder = customer.placeCompoundOrder(orders);
+        return compoundOrder;
     }
 
-    // @PostMapping("/shipOrder")
-    // public void shipOrder(@RequestParam int orderId) {
-    // OBsl.shipOrder(orderId);
-    // }
+    private static class OrderRequest {
+        private int accountId;
+        private double balance;
+        private List<Product> products;
 
-    // @GetMapping("/displaySimpleOrders")
-    // public String displaySimpleOrders() {
-    // return OBsl.displaySimpleOrders();
-    // }
+        // getters and setters
 
-    @GetMapping("/shimaa")
-    public String habal() {
-        return "shimaa";
+        public int getAccountId() {
+            return accountId;
+        }
+
+        public void setAccountId(int accountId) {
+            this.accountId = accountId;
+        }
+
+        public double getBalance() {
+            return balance;
+        }
+
+        public void setBalance(double balance) {
+            this.balance = balance;
+        }
+
+        public List<Product> getProducts() {
+            return products;
+        }
+
+        public void setProducts(List<Product> products) {
+            this.products = products;
+        }
     }
 
-    // @PostMapping("/placeCompoundOrder")
-    // public ResponseEntity<String> placeCompoundOrder(@RequestParam int
-    // CompoundOrderId,
-    // @RequestBody List<Order> compoundOrder) {
-    // try {
-    // OBsl.placeCompoundOrder(CompoundOrderId, compoundOrder);
-    // return ResponseEntity.ok("Compound order placed successfully.");
-    // } catch (Exception e) {
-    // e.printStackTrace(); // Log the exception using a proper logger
-    // return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-    // .body("Error placing compound order: " + e.getMessage());
-    // }
-    // }
+    private static class CompoundOrderRequest {
+        private int accountId;
+        private double balance;
+        private List<Order> orders;
 
-    // @PostMapping("/shipCompoundOrder")
-    // public ResponseEntity<String> shipCompoundOrder(@RequestParam int
-    // compoundOrderId, @RequestParam double shipFee) {
-    // try {
-    // // String result = OBsl.shipCompoundOrder(compoundOrderId);
-    // // return ResponseEntity.ok(result);
-    // } catch (Exception e) {
-    // e.printStackTrace(); // Log the exception using a proper logger
-    // return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
-    // .body("Error shipping compound order: " + e.getMessage());
-    // }
-    // }
+        // getters and setters
 
-    // @GetMapping("/displayCompoundOrders")
-    // public String displayCompoundOrders() {
-    // return OBsl.displayCompoundOrders();
-    // }
-    // Additional endpoints can be added as needed...
+        public int getAccountId() {
+            return accountId;
+        }
 
+        public void setAccountId(int accountId) {
+            this.accountId = accountId;
+        }
+
+        public double getBalance() {
+            return balance;
+        }
+
+        public void setBalance(double balance) {
+            this.balance = balance;
+        }
+
+        public List<Order> getOrders() {
+            return orders;
+        }
+
+        public void setOrders(List<Order> orders) {
+            this.orders = orders;
+        }
+    }
 }
