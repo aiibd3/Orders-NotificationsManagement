@@ -5,6 +5,7 @@ import com.example.ordersnotifications.api.model.NotificationTemplate;
 import com.example.ordersnotifications.service.NotificationStrategy.EmailNotificationStrategy;
 import com.example.ordersnotifications.service.NotificationStrategy.NotificationStrategy;
 import com.example.ordersnotifications.service.NotificationStrategy.SMSNotificationStrategy;
+import com.example.ordersnotifications.service.NotificationStrategy.NotificationRequest;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
@@ -36,7 +37,7 @@ public class NotificationController {
                 "Dear {name}, your booking of the item {item} is confirmed. Thanks for using our store :)",
                 Arrays.asList("name", "item"),
                 Arrays.asList("English", "Spanish"),
-                List.of("Email")
+                Arrays.asList("Email")
         );
 
         // Create an email notification based on the template and request
@@ -71,26 +72,4 @@ public class NotificationController {
         return "SMS notification sent successfully";
     }
 
-    private static class NotificationRequest {
-        private String recipient;
-        private Map<String, String> values;
-
-        // getters and setters
-
-        public String getRecipient() {
-            return recipient;
-        }
-
-        public void setRecipient(String recipient) {
-            this.recipient = recipient;
-        }
-
-        public Map<String, String> getValues() {
-            return values;
-        }
-
-        public void setValues(Map<String, String> values) {
-            this.values = values;
-        }
-    }
 }
